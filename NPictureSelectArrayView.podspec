@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.name         = "NPictureSelectArrayView"
   s.version      = "0.0.1"
-  s.summary      = "select picture and show as cells, column and total number can be change, you can delete, replace image, the source code use masonary"
+  s.summary      = "select picture and show as cells, column and total number can be change, you can delete, replace image"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-			select a group images and show, you can remove, replace, the height is auto
+			select a group images and show, you can remove, replace, the height is auto, the source code use masonary, reactivecocoa 
                    DESC
 
   s.homepage     = "https://github.com/NagiYan/NPictureSelectArrayView"
@@ -64,8 +64,8 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+  #s.platform     = :ios
+  s.platform     = :ios, "7.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -118,7 +118,7 @@ Pod::Spec.new do |s|
   #
 
   # s.framework  = "SomeFramework"
-  # s.frameworks = "SomeFramework", "AnotherFramework"
+  s.frameworks = "UIKit", "ImageIO"
 
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
