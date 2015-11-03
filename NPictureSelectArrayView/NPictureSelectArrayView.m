@@ -7,6 +7,9 @@
 //
 
 #import "NPictureSelectArrayView.h"
+#import "UIActionSheet+Block.h"
+#import "ReactiveCocoa.h"
+#import "Masonry.h"
 
 @interface NPictureSelectArrayView ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (retain, nonatomic) NSMutableArray* imageViews;
@@ -77,7 +80,11 @@
 
 - (void)p_updateUI
 {
-    [UIViewUtil freeSubViews:self];
+    while ([self subviews] && [[self subviews] count] > 0)
+    {
+        [[[self subviews] objectAtIndex:0] removeFromSuperview];
+    }
+    
     __block typeof(self) weakSelf = self;
     NSArray* images = [self images];
     
@@ -108,14 +115,14 @@
 - (UIView*)p_addCell:(NSInteger)index image:(UIImage*)image
 {
     NSInteger column = index%_column;
-    float perWidth = ([[GScreen sharedInstance] GetDeviceFrame].width - 10*(_column+1))/_column;
+    float perWidth = ([UIScreen mainScreen].applicationFrame.size.width - 10*(_column+1))/_column;
     UIButton* button = [[UIButton new] autorelease];
     [self addSubview:button];
     [button setImage:image forState:UIControlStateNormal];
     [button.layer setMasksToBounds:YES];
     [button.layer setCornerRadius:3.0]; //设置矩圆角半径
     [button.layer setBorderWidth:1];   //边框宽度
-    [button.layer setBorderColor:UICOLOR_BKG_GREY.CGColor];
+    [button.layer setBorderColor:[UIColor colorWithRed:240.0/255 green:240.0/255 blue:240.0/255 alpha:1.0].CGColor];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).with.offset(10 + (perWidth + 10)*column);
         make.top.mas_equalTo(index/_column*(10 + perWidth) + 10);
