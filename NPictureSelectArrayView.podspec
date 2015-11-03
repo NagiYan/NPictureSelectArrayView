@@ -28,8 +28,8 @@ Pod::Spec.new do |s|
 			select a group images and show, you can remove, replace, the height is auto, the source code use masonary, reactivecocoa 
                    DESC
 
-  s.homepage     = "https://github.com/NagiYan/NPictureSelectArrayView"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
+  s.homepage     = "http://nagiyan.github.io/NPictureSelectArrayView/"
+  s.screenshots  = "http://i13.tietuku.com/e762cbc4fa2388f0.png", "http://i13.tietuku.com/af3be622ae8dc84c.png", "http://i13.tietuku.com/17596cea6d68cdd3.png"
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
