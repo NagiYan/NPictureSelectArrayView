@@ -22,10 +22,10 @@
 @property (readonly, nonatomic)NSArray* images;
 
 // the size of the image limit, defaulte is 700
-@property (assign, nonatomic)NSInteger imageSizeFix;
+@property (assign, nonatomic)float imageSizeFix;
 
 // force the image to square, default is yes
-@property (assign, nonatomic)NSInteger squareFix;
+@property (assign, nonatomic)BOOL squareFix;
 
 // must be set
 @property (assign, nonatomic)UIViewController* parentVC;

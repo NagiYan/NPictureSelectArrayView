@@ -184,7 +184,9 @@
         imagePicker.sourceType = source;
         
         //在选定图片之前，用户可以简单编辑要选的图片。包括上下移动改变图片的选取范围，用手捏合动作改变图片的大小等。
-        imagePicker.allowsEditing = YES;
+        if ([self squareFix]) {
+            imagePicker.allowsEditing = YES;
+        }
         
         //实现委托，委托必须实现UIImagePickerControllerDelegate协议，来对用户在图片选取器中的动作
         imagePicker.delegate = self;
@@ -217,10 +219,18 @@
     else
     {
         CGSize photoSize = [image size];
-        while (photoSize.height > [self imageSizeFix] || photoSize.width > [self imageSizeFix])
+        if (photoSize.height > [self imageSizeFix] || photoSize.width > [self imageSizeFix])
         {
-            photoSize.height = [self imageSizeFix];
-            photoSize.width = [self imageSizeFix];
+            if (photoSize.height >= photoSize.width)
+            {
+                photoSize.width = photoSize.width/photoSize.height*[self imageSizeFix];
+                photoSize.height = [self imageSizeFix];
+            }
+            else
+            {
+                photoSize.height = photoSize.height/photoSize.width*[self imageSizeFix];
+                photoSize.width = [self imageSizeFix];
+            }
         }
         imageThumb = [self thumbnailWithImage:image size:photoSize];
     }
